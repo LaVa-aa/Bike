@@ -8,16 +8,17 @@ namespace RESTBike.Managers
     public class BikesManager
     {
         private static int _nextID = 1;
-        private static readonly List<Bike.Bike> _bikes = new List<Bike.Bike>
+        private static readonly List<Bike.Bike> _bikes = new List<Bike.Bike>()
         {
             new Bike.Bike { Id = _nextID++, Name = "Sweet", Brand = "Kildemoes", Price = 3500},
             new Bike.Bike { Id = _nextID++, Name = "Darkness", Brand = "Greenmos", Price = 3500},
             new Bike.Bike { Id = _nextID++, Name = "Lightness", Brand = "Mountain", Price = 3500}
         };
 
-        public IEnumerable<Bike.Bike> Get()
+        public List<Bike.Bike> GetAll()
         {
-            return _bikes;
+            List<Bike.Bike> result = new List<Bike.Bike>(_bikes);
+            return result;
         }
 
         public Bike.Bike GetByID(int id)
