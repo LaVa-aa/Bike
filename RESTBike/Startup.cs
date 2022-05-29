@@ -57,7 +57,6 @@ namespace RESTBike
             //This will define the default CORS policy for your REST service.
             //In order to specify individual CORS policies for the individual methods in your controller class, you can add the following tag to the methed:
             //[EnableCors("allowAll")]
-            //er ikke sikkert alle får adgang til vores methoder
             app.UseCors("allowAll");
 
             app.UseAuthorization();
