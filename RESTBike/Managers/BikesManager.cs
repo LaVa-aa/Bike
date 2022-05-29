@@ -38,6 +38,21 @@ namespace RESTBike.Managers
             return addbike;
         }
 
+        //Update - redigere en cykels informationer
+        public Bike.Bike UpdateBike(int id, Bike.Bike updateBike)
+        {
+            Bike.Bike bike = _bikes.Find(b => b.Id == id);
+            if (bike == null)
+            {
+                return null;
+            }
+            //ellers
+            bike.Name = updateBike.Name;
+            bike.Brand = updateBike.Brand;
+            bike.Price = updateBike.Price;
+            return bike;
+        }
+
         //Delete sletter en cykel, fra listen _bikes
         //sletter på den tilhørende id
         public Bike.Bike DeleteBike(int id)

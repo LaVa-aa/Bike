@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using RESTBike.Managers;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace RESTBike.Controllers
 {
@@ -18,7 +17,7 @@ namespace RESTBike.Controllers
         //private BikesManager _manager;
         private readonly BikesManager _manager = new BikesManager();
 
-        // GET: api/<ValuesController>
+        // GET: api/<bikesController>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet]
@@ -32,7 +31,7 @@ namespace RESTBike.Controllers
             return Ok(result);
         }
 
-        // GET api/<ValuesController>/5
+        // GET api/<bikesController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
@@ -61,13 +60,22 @@ namespace RESTBike.Controllers
             return Created($"/api/Bike/{result.Id}", result);
         }
 
-        // PUT api/<ValuesController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        //PUT api/<bikesController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpPut("{id}")]
+        public ActionResult<Bike.Bike> Put(int id, [FromBody] Bike.Bike updateBike)
+        {
+            Bike.Bike result = _manager.UpdateBike(id, updateBike);
+            if (result == null)
+            {
+                return NotFound("No such bike, with ID: " + id);
+            }
+            //ellers
+            return Ok(result);
+        }
 
-        // DELETE api/<ValuesController>/5
+        // DELETE api/<bikesController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
