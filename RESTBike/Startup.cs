@@ -32,6 +32,12 @@ namespace RESTBike
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RESTBike", Version = "v1" });
             });
+            // CORS add to restbik
+            //vi har lavet en policy
+            services.AddCors(options => options.AddPolicy("allowAll",
+                builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +53,12 @@ namespace RESTBike
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            // CORS allowall
+            //This will define the default CORS policy for your REST service.
+            //In order to specify individual CORS policies for the individual methods in your controller class, you can add the following tag to the methed:
+            //[EnableCors("allowAll")]
+            //er ikke sikkert alle får adgang til vores methoder
+            app.UseCors("allowAll");
 
             app.UseAuthorization();
 
