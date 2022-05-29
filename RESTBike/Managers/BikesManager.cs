@@ -8,11 +8,11 @@ namespace RESTBike.Managers
     public class BikesManager
     {
         /// <summary>
-        /// static declarer at, metoden kun tilhører classen, den kan derfor ikke instansieres
-        ///dvs man kan ikke oprette et objekt af en static class
-        ///her: listen er static og tilhører kun denne class
-        ///readonly indicates that assignment to the field can only occur as part of the
-        ///declaration/ or in a constructor in the same class
+        /// STATIC declarer at, metoden kun tilhører classen, den kan derfor ikke instansieres igen
+        ///her: Static betyder, at indholdet af den variabel, der er deklareret som static, er ens på tværs af alle instanser af klassen.
+        ///da Manager-klasserne deklarerer data for static, så der ikke er flere forskellige udgaver af den
+        ///READONLY: tilladelse til at læse, men ikke ændre direkte, det sørger for at 
+        ///variablen ikke kan overskrives, eller er sværere at overskrive.
         /// </summary>
         
         private static int _nextID = 1;
