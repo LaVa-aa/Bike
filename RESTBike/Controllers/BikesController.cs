@@ -9,6 +9,13 @@ using RESTBike.Managers;
 
 namespace RESTBike.Controllers
 {
+    /// <summary>
+    /// a controller is a class that handles HTTP requests. 
+    /// The public methods of the controller are called action methods 
+    /// When the Web API framework receives a request, it routes the request 
+    /// to an action.
+    /// </summary>
+    
     [Route("api/[controller]")]
     [ApiController]
     public class BikesController : ControllerBase

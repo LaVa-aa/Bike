@@ -7,7 +7,16 @@ namespace RESTBike.Managers
 {
     public class BikesManager
     {
+        /// <summary>
+        /// static declarer at, metoden kun tilhører classen, den kan derfor ikke instansieres
+        ///dvs man kan ikke oprette et objekt af en static class
+        ///her: listen er static og tilhører kun denne class
+        ///readonly indicates that assignment to the field can only occur as part of the
+        ///declaration/ or in a constructor in the same class
+        /// </summary>
+        
         private static int _nextID = 1;
+      
         private static readonly List<Bike.Bike> _bikes = new List<Bike.Bike>()
         {
             new Bike.Bike { Id = _nextID++, Name = "Sweet", Brand = "Kildemoes", Price = 3500},
